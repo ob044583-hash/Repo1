@@ -6,10 +6,12 @@ pipeline {
       steps {
         // Checkout repo1 into workspace root
         git url: 'https://github.com/ob044583-hash/Repo1.git', branch: 'main'
+
         // Checkout repo2 into subfolder 'repo2'
         dir('repo2') {
-          git url: 'https://github.com/ob044583-hash/Repo1.git', branch: 'main'
+          git url: 'https://github.com/ob044583-hash/Repo2.git', branch: 'main'
         }
+
         // show files
         bat 'echo === workspace listing ==='
         bat 'dir /B /S'
@@ -36,7 +38,9 @@ pipeline {
 
   post {
     success {
-      echo " Pipeline succeeded"
+      echo "Pipeline succeeded"
       // cleanup local image (optional)
       bat 'docker image rm repo1-with-repo2:latest || exit /b 0'
     }
+  } // post
+} // pipeline
