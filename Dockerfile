@@ -1,13 +1,12 @@
-FROM openjdk:17
+FROM ubuntu:20.04
 
 WORKDIR /app
 
-# Install git and clone Repo2
-RUN apt-get update && apt-get install -y git \
-    && git clone https://github.com/ob044583-hash/Repo2.git
+# Install git inside the container
+RUN apt-get update && apt-get install -y git
 
-# Compile Java file
-RUN javac Repo2/Devops.java
+# Clone Repo2 inside the container
+RUN git clone https://github.com/ob044583-hash/Repo2.git
 
-# Run Java class
-CMD ["java", "-cp", "Repo2", "Devops"]
+# When the container starts, show the text file content
+CMD ["cat", "Repo2/Dockerfile.txt"]
