@@ -9,4 +9,4 @@ RUN apt-get update && apt-get install -y git
 RUN git clone https://github.com/ob044583-hash/Repo2.git
 
 # When the container starts, display the file content
-CMD ["cat", "Repo2/Devopss.java"]
+CMD ["cat", "Repo2/Devops.java"]
